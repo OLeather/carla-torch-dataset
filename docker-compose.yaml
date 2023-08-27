@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  carla_server:
+    build:
+      dockerfile: ./docker/carla_server.Dockerfile
+    environment:
+      - DISPLAY=1
+    container_name: carla_server
+    runtime: nvidia
+    command: /bin/bash -c "./CarlaUE4.sh -nosound -carla-server -RenderOffscreen -world-port=2000"
+  carla_client:
+    build:
+      dockerfile: ./docker/carla_client.Dockerfile
+    container_name: carla_client
+    ports:
+      - 8883:8888
+    environment:
+      - CLIENT_NAME=carla_server
+    volumes:
+      - ./data:/data
+    command: jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' 
