@@ -38,3 +38,6 @@ imgs = next(iter(dataset))
 rgb = imgs['rgb']
 depth = imgs['depth']
 ```
+
+## TODO
+Currently, only image sensors (rgb, depth) are supported. The goal is to support all sensor types in the data collector and data loader with their respective formats
