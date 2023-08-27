@@ -13,7 +13,7 @@ services:
       dockerfile: ./docker/carla_client.Dockerfile
     container_name: carla_client
     ports:
-      - 8883:8888
+      - 8888:8888
     environment:
       - CLIENT_NAME=carla_server
     volumes:

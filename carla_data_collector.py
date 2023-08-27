@@ -3,8 +3,8 @@ import random
 import os
  
 class CarlaDataCollector():
-    def __init__(self, client_name='localhost', data_dir='./data/'):
-        client = carla.Client(client_name, 2000)
+    def __init__(self, hostname='localhost', data_dir='./data/'):
+        client = carla.Client(hostname, 2000)
         self.world = client.get_world()
         
         # Set world to synchronus mode so sensor measurements are aligned in time
